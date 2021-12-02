@@ -73,7 +73,7 @@ while(cap.isOpened()):
     _, frame = cap.read()
     canny_image = canny(frame)
     cropped_canny = region_of_interest(canny_image)
-    #cv2.imshow("cropped_canny",cropped_canny)
+    # cv2.imshow("cropped_canny",cropped_canny)
 
     lines = houghLines(cropped_canny)
     averaged_lines = average_slope_intercept(frame, lines)
