@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
- 
+
 def canny(img):
     if img is None:
         cap.release()
@@ -69,6 +69,14 @@ def average_slope_intercept(image, lines):
     return averaged_lines
 
 cap = cv2.VideoCapture("test1.mp4")
+frame_width = int(cap.get(3))
+frame_height = int(cap.get(4))
+   
+size = (frame_width, frame_height)
+result = cv2.VideoWriter('filename.avi', 
+                         cv2.VideoWriter_fourcc(*'MJPG'),
+                         10, size)
+
 while(cap.isOpened()):
     _, frame = cap.read()
     canny_image = canny(frame)
@@ -79,7 +87,8 @@ while(cap.isOpened()):
     averaged_lines = average_slope_intercept(frame, lines)
     line_image = display_lines(frame, averaged_lines)
     combo_image = addWeighted(frame, line_image)
-    cv2.imshow("result", combo_image)
+    result.write(combo_image)
+    #cv2.imshow("result", combo_image)
     
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
