@@ -12,6 +12,15 @@ def canny(img):
     canny = cv2.Canny(gray, 50, 150)
     return canny
 
+# content of test_sample.py
+def inc(x):
+    return x + 1
+
+
+def test_answer():
+    assert inc(3) == 5
+    
+
 def region_of_interest(canny):
     height = canny.shape[0]
     width = canny.shape[1]
