@@ -49,6 +49,6 @@ jobs:
         # email body as text
         body: After the recent commit ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
         # comma-separated string, send email to
-        to: vishnu.sharma18@st.niituniversity.in
+        to: vishnu.sharma18@st.niituniversity.in, arjunbakshi245@gmail.com
         # from email name
         from: Capstone2 Project
