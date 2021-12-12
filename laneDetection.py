@@ -75,8 +75,8 @@ frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
    
 size = (frame_width, frame_height)
-result = cv2.VideoWriter('filename.avi', 
-                         cv2.VideoWriter_fourcc(*'MJPG'),
+result = cv2.VideoWriter('filename.mp4', 
+                         cv2.VideoWriter_fourcc(*'MP4V'),
                          10, size)
 
 while(cap.isOpened()):
