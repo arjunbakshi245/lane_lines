@@ -121,13 +121,14 @@ def handle_uploaded_file(f):
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
-        cap.release()
-        cv2.destroyAllWindows()
+        
         
         with open(f.name, 'wb+') as destination:             
             for chunk in f.chunks():
                 destination.write(chunk)
         
 
-        return result
+        cap.release()
+        cv2.destroyAllWindows()
+        
         
