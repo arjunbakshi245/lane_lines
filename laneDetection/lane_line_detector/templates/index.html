@@ -85,7 +85,7 @@ https://www.tooplate.com/view/2116-blugoon
                 }
             }
         </script>
-        <video source id="myfile" src="#" alt="test" type="video/mp4" height="300" width="500" autoplay muted controls loop>
+        <video source id="myfile" src="#" alt="test" type="video/webm; codecs='vp8.0, vorbis'" height="300" width="500"  autoplay muted controls loop>
         </video>
 
         <div style="width: 500px; margin: auto;">
@@ -106,11 +106,11 @@ https://www.tooplate.com/view/2116-blugoon
           </fieldset>
           
           {% if filename %}
-            <div style="margin: 10px auto;">
-              <video autoplay="autoplay" height="300" width="500" controls="controls" preload="preload" height="500">
-                <source src="{{ MEDIA_URL }}/{{ filename }}" type="video/mp4"></source>
+            
+              <video source src="{{ MEDIA_URL }}/{{ filename }}" type="video/webm; codecs='vp8.0, vorbis'" autoplay="autoplay" height="300" width="500" controls="controls"  height="500" muted loop>
+                
               </video>
-            </div>
+            
           {% endif %}
         </div>	
 
