@@ -12,8 +12,9 @@ def upload_display_video(request):
         if form.is_valid():
             file = request.FILES['file']
             #print(file.name)
-            handle_uploaded_file(file)
-            return render(request, "index.html", {'filename': file.name})
+            result = handle_uploaded_file(file)
+            print(result)
+            return render(request, "index.html", {'filename':'filename.webm'})
     else:
         form = UploadFileForm()
     return render(request, 'index.html', {'form': form})
@@ -97,9 +98,9 @@ def handle_uploaded_file(f):
         frame_width = int(cap.get(3))
         frame_height = int(cap.get(4))
         size = (frame_width, frame_height)
-        result = cv2.VideoWriter('D:\\semester7\\capstone\\finalCapstoneProject\\lane_lines\\laneDetection\\lane_line_detector\\static\\media\\filename.mp4', 
-                         cv2.VideoWriter_fourcc(*'MP4V'),
-                         10, size)
+        result = cv2.VideoWriter('D:\\semester7\\capstone\\finalCapstoneProject\\lane_lines\\laneDetection\\lane_line_detector\\static\\media\\filename.webm', 
+                         cv2.VideoWriter_fourcc(*"vp80"),
+                         30, size)
         
         while(cap.isOpened()):
             _, frame = cap.read()
@@ -120,9 +121,14 @@ def handle_uploaded_file(f):
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
-        cap.release()
-        cv2.destroyAllWindows()
-
-        with open(f.name, 'wb+') as destination:                 
+        
+        
+        with open(f.name, 'wb+') as destination:             
             for chunk in f.chunks():
                 destination.write(chunk)
+        
+
+        cap.release()
+        cv2.destroyAllWindows()
+        
+        

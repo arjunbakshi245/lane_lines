@@ -123,9 +123,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'lane_line_detector/static')
 ]
 
+ALLOWED_HOSTS = ['*']
+
 # Media Settings
-MEDIA_ROOT = 'D:\\semester7\\capstone\\finalCapstoneProject\\lane_lines\\laneDetection\\lane_line_detector\\static\\media'
-MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'lane_line_detector/static/media')
+MEDIA_URL =  os.path.join(BASE_DIR, 'lane_line_detector/static/media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
