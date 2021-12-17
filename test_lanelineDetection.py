@@ -9,11 +9,11 @@ def test_canny(img):
         exit()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     kernel = 5
-    assert kerner==5,"test passed"
+    assert kernel==5,"test passed"
     blur = cv2.GaussianBlur(gray,(kernel, kernel),0)
     canny = cv2.Canny(gray, 50, 150)
     return canny
-    assert output==canny,"test passed"
+    
 
 
 
@@ -79,8 +79,8 @@ def test_average_slope_intercept(image, lines):
                 right_fit.append((slope, intercept))
     left_fit_average  = np.average(left_fit, axis=0)
     right_fit_average = np.average(right_fit, axis=0)
-    left_line  = make_points(image, left_fit_average)
-    right_line = make_points(image, right_fit_average)
+    left_line  = test_make_points(image, left_fit_average)
+    right_line = test_make_points(image, right_fit_average)
     averaged_lines = [left_line, right_line]
     return averaged_lines
     
@@ -96,13 +96,13 @@ result = cv2.VideoWriter('filename.mp4',
 
 while(cap.isOpened()):
     _, frame = cap.read()
-    canny_image = canny(frame)
-    cropped_canny = region_of_interest(canny_image)
+    canny_image = test_canny(frame)
+    cropped_canny = test_region_of_interest(canny_image)
     # cv2.imshow("cropped_canny",cropped_canny)
 
     lines = houghLines(cropped_canny)
-    averaged_lines = average_slope_intercept(frame, lines)
-    line_image = display_lines(frame, averaged_lines)
+    averaged_lines = test_average_slope_intercept(frame, lines)
+    line_image = test_display_lines(frame, averaged_lines)
     combo_image = addWeighted(frame, line_image)
     result.write(combo_image)
     #cv2.imshow("result", combo_image)
