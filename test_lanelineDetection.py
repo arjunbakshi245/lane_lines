@@ -3,7 +3,7 @@ import numpy as np
 
 def test_canny(img):
     if img is None:
-        assert if img is None,"test passed"
+        assert img is None ,"test passed"
         cap.release()
         cv2.destroyAllWindows()
         exit()
@@ -28,7 +28,7 @@ def test_region_of_interest(canny):
     cv2.fillPoly(mask, triangle, 255)
     masked_image = cv2.bitwise_and(canny, mask)
     return masked_image
-    assert output==masked_image,"test passed"
+    
 
 def houghLines(cropped_canny):
     return cv2.HoughLinesP(cropped_canny, 2, np.pi/180, 100, 
@@ -40,14 +40,14 @@ def addWeighted(frame, line_image):
 def test_display_lines(img,lines):
     line_image = np.zeros_like(img)
     if lines is not None:
-        assert if lines is not None,"test passed"
+        assert lines is not None,"test passed"
         for line in lines:
-            assert for line in lines,"test passed"
+            assert line in lines,"test passed"
             for x1, y1, x2, y2 in line:
-                assert for x1,y1,x2,y2 in line,"test passed"
+                assert x1,y1;x2,y2 in line,"test passed"
                 cv2.line(line_image,(x1,y1),(x2,y2),(0,0,255),10)
     return line_image
-    assert output==line_image,"test passed"
+    
  
 def test_make_points(image, line):
     slope, intercept = line
@@ -61,19 +61,19 @@ def test_average_slope_intercept(image, lines):
     left_fit    = []
     right_fit   = []
     if lines is None:
-        assert if lines is None,"test passed"
+        assert lines is None,"test passed"
         return None
     for line in lines:
-        assert for line in lines,"test passed"
+        assert line in lines,"test passed"
         for x1, y1, x2, y2 in line:
-            assert for x1, y1, x2, y2 in line,"test passed"
+            assert x1, y1; x2, y2 in line,"test passed"
             fit = np.polyfit((x1,x2), (y1,y2), 1)
             slope = fit[0]
             intercept = fit[1]
             assert slope == fit[0],"test passed"
             assert intercept == fit[1],"test passed"
             if slope < 0: 
-                assert if slope<0."test passed"
+                assert slope<0,"test passed"
                 left_fit.append((slope, intercept))
             else:
                 right_fit.append((slope, intercept))
@@ -83,7 +83,7 @@ def test_average_slope_intercept(image, lines):
     right_line = make_points(image, right_fit_average)
     averaged_lines = [left_line, right_line]
     return averaged_lines
-    assert output == averaged_lines."test passed"
+    
     
 cap = cv2.VideoCapture("test1.mp4")
 frame_width = int(cap.get(3))
