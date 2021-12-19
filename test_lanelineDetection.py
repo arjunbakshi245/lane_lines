@@ -1,5 +1,18 @@
-""" import cv2
+import cv2
 import numpy as np
+'''
+def test_canny(img):
+    if img is None:
+        assert img is None ,"test passed"
+        cap.release()
+        cv2.destroyAllWindows()
+        exit()
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    kernel = 5
+    assert kernel==5,"test passed"
+    blur = cv2.GaussianBlur(gray,(kernel, kernel),0)
+    canny = cv2.Canny(gray, 50, 150)
+    return canny
 
 def test_canny(img):
     if img is None:
@@ -83,8 +96,8 @@ def test_average_slope_intercept(image, lines):
     right_line = test_make_points(image, right_fit_average)
     averaged_lines = [left_line, right_line]
     return averaged_lines
-    
-    
+
+ 
 cap = cv2.VideoCapture("test1.mp4")
 frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
@@ -113,7 +126,7 @@ while(cap.isOpened()):
 cap.release()
 cv2.destroyAllWindows()
 
- """
+ ''' 
 def test_uppercase():
     assert "loud noises".upper() == "LOUD NOISES"
 
